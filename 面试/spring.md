@@ -1,3 +1,6 @@
+## 惊人！Spring5 AOP 默认使用Cglib? 从现象到源码深度分析 
+[惊人！Spring5 AOP 默认使用Cglib? 从现象到源码深度分析](https://www.cnblogs.com/coderxiaohei/p/11758239.html)
+
 ## Spirng是什么？
 官方的定义是，Spring 为企业级应用提供了全面的模型，包括 IoC、AOP、Spring MVC、Spring Testing，还有一些关于任务、缓存、邮件之类的集成。
 
@@ -238,4 +241,43 @@ io.github.yan624.xxx.config.AppConfig2=org.springframework.stereotype.Component
 
 ## starter是什么？
 starter 里面有一些自动装配的类，pom 文件里还制定了各种 jar 包的依赖，用来简化开发的。
+
+## JDKProxy和Cglib有什么区别？
+jdk 代理是基于接口的代理，cglib 是基于类的代理。
+
+cglib无法代理 final 类，也无法处理 final 方法。
+
+jdk 代理通过反射机制实现，cglib 通过修改字节码生成子类来实现。
+
+如果目标实现了接口，spring 默认使用 jdk。
+
+如果目标没有实现接口，spring 默认使用 cglib。
+
+SpringBoot默认是cglib动态代理，如果需要开启 jdk 代理，需要设置:
+
+```yml
+spring:
+  aop:
+    proxy-target-class: false
+
+```
+
+详情请看《惊人！Spring5 AOP 默认使用Cglib? 从现象到源码深度分析 》
+
+## springboot默认启用aop不需要加@EnableAspectJAutoProxy
+`AopAutoConfiguration`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
