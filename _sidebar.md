@@ -1,5 +1,4 @@
 - [我的Java小册](/)
-- [面试](面试/index)
 - [javaweb](javaweb/index)
 - [SSM](SSM/index)
 	+ [Spring](SSM/Spring)
@@ -24,4 +23,5 @@
 	+ [数据校验](孵化池/数据校验)
 	+ [类型转换和格式化](孵化池/类型转换和格式化)
 	+ [事务管理](孵化池/事务管理)
+- [面试](面试/index)
 

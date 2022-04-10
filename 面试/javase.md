@@ -7,8 +7,8 @@ short | 2 = $2^{16}$
 int (默认) | 4 = $2^{32}$
 long (L/l) | 8 = $2^{64}$
 -----|------
-float (F/f) | 4
 double (默认) | 8
+float (F/f) | 4
 char | 2
 boolean | 1
 
@@ -414,8 +414,13 @@ public class Singleton {
 例如说想要创建一个新的处理器适配器，DispatcherServlet 中的适配过程不需要做修改，只需要实现适配器中的 handle 方法就行了。
 
 
-
-
+## 遇到过的异常有哪些
+1. 空指针异常：NullPointerException
+2. 数组越界异常：IndexOutOfBoundsException
+3. 栈溢出异常：StackOverflowError
+4. 内存溢出异常：OutOfMemoryError
+5. 算术异常（就是被 0 除）：ArithmeticException
+6. 未找到文件异常：FileNotFoundException
 
 
 
