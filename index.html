@@ -38,6 +38,11 @@
 				count: {
 					language: 'chinese'
 				},
+				timeUpdater: {
+					text: "<div align='center'>最后更新时间: {docsify-updated}</div>",
+					formatUpdated: "{YYYY}/{MM}/{DD}",
+					whereToPlace: "bottom",  // "top" or "bottom", default to "bottom"
+				},
 				// 属性配置
 				name: '',
 				repo: '',
@@ -89,6 +94,12 @@
 		<!-- footer -->
 		<script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
 		<!-- <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js" type="text/javascript"></script> -->
+		<!-- 可以保存更新时间的插件 -->
+		<script src="https://cdn.jsdelivr.net/npm/docsify-updated/src/time-updater.min.js"></script>
+		<!-- 图片描述，现在可以将图片居中了，并且还可以将图片放在段落内。 -->
+		<script src="https://cdn.jsdelivr.net/gh/h-hg/docsify-image-caption/dist/docsify-image-caption.min.js"></script>
+		<!-- 支持相对路径，使用 [[]] 包裹链接-->
+		<script src="https://cdn.jsdelivr.net/npm/docsify-wikilink@1"></script>
 		<script>
 		var _hmt = _hmt || [];
 		(function() {

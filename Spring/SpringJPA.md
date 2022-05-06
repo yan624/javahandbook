@@ -136,3 +136,25 @@ JPA2 引入了一个标准 api，可以程序化地构建查询语句。
 1. 查询操作
 	- [JPA @Basic单表查询实现大字段懒加载](https://blog.csdn.net/weixin_37968613/article/details/100771942)
 	- [JPA @OneToMany及懒加载无效问题](https://blog.csdn.net/R_o_b_o_t_/article/details/115400514)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

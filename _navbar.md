@@ -6,4 +6,3 @@
 	+ [我的数据库小册](#)
 	+ [我的java面试小册](#)
 	+ [我的NLP小册](https://yan624.github.io/nlphandbook/)
-	+ [机器学习](/机器学习/index)

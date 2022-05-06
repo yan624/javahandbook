@@ -1,0 +1,1 @@
+如果想要让自定义的方法也获得分页功能，需要为方法定义 `IPage<xxx> page` 参数。注意：这个参数必须位于第一个位置，否则抛出 `org.apache.ibatis.exceptions.TooManyResultsException` 异常， Expected one result (or null) to be returned by selectOne(), but found: 7。

@@ -1,0 +1,1 @@
+[mybatis gnerator 配置](http://mybatis.org/generator/configreference/xmlconfig.html)

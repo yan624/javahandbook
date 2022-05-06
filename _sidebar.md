@@ -6,6 +6,8 @@
 	+ [MyBatis](SSM/MyBatis)
 <!-- 由于 spring 涉及业务范围广泛，因此将 spring 直接拆分到各组件中记录。此处仅作为 spring 的整合，相当于一个 redirect 功能 -->
 - [Spring](Spring/index)
+	+ [spring-core](Spring/spring-core/index)
+		* [Spring类型转换系统](Spring/spring-core/Spring类型转换系统)
 	+ [SpringBoot](Spring/SpringBoot)
 	+ [Spring JPA](Spring/SpringJPA)
 - [微服务技术栈](微服务技术栈/index)
