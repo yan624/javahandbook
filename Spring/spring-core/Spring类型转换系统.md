@@ -2,7 +2,7 @@ Spring 3 引入了 `core.convert` 包，提供了一种通用的类型转换系�
 
 [Spring 官方文档](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert) 中介绍了该类型转换系统。知乎上有人整理了 [Spring 的类型转换](https://zhuanlan.zhihu.com/p/213809308)，可供参考。
 
-Spring 提供了如下几种 converter（均为接口）：
+Spring 提供了如下几种设计好的转换器接口。简单来说只是在方法内部接收一个源对象，然后返回一个目标对象。
 
 1. `Converter<S, T>`：将源对象 `S` 转为目标对象 `T`。
 2. `ConverterFactory<S, R>`
@@ -10,11 +10,11 @@ Spring 提供了如下几种 converter（均为接口）：
 4. `ConditionalConverter`：暴露 `match()` 方法，令其它转换器只有在满足某个条件时才能转换。
 5. `ConditionalGenericConverter`：顾名思义，继承了两个接口。如果想要实现通用转换器的功能，实现该接口即可。
 
-除了上述的转换器之外，Spring 还提供了 `ConvertingComparator` 类（转换时比较器）。它本质上是一个比较器（`Comparator`），但是在比较之前，会将参与比较的两个对象 `S` 转换为对象 `T`。
+*除了上述的转换器之外，Spring 还提供了 `ConvertingComparator` 类（转换时比较器）。它本质上是一个比较器（`Comparator`），但是在比较之前，会将参与比较的两个对象 `S` 转换为对象 `T`。*
 
-如果想要实现一个类型转换功能只需要实现以上任意一个接口即可。我们将转换器注册到 IoC 容器中之后，就可以在 Spring 项目中很方便地使用。不过这样做也有缺点。首先，如果一个类需要使用多个转换器，就会出现很多类似的代码，比如 `xxxConverter.convert(..., [...])`。其次，当增加或者删除转换器时，也需要改动多处代码。如果有一个类能够帮我们集中管理所有的转换器，那么代码的复杂度以及耦合度均可以下降。
+如果想要实现一个类型转换功能只需要实现以上任意一个接口即可。在将转换器注册到 IoC 容器中之后，就可以在 Spring 项目中很方便地使用。不过这样做也有缺点。首先，如果一个类需要使用多个转换器，就会出现很多类似的代码，比如 `xxxConverter.convert(..., [...])`。其次，当增加或者删除转换器时，需要改动多处代码。**如果有一个类能够帮我们集中管理所有的转换器**，那么代码的复杂度以及耦合度均可以下降。
 
-`ConversionService` 帮我们实现了这一功能。我们只需要调用 `cs.convert(obj, tgt.class)` 即可。
+`ConversionService` 帮我们实现了这一功能。我们只需要调用 `cs.convert(obj, target.class)` 即可。
 
 ## ConversionService
 `ConversionService` 的继承体系如下图所示：
@@ -62,7 +62,7 @@ Map<ConvertiblePair, ConvertersForPair> converters = new ConcurrentHashMap<>(256
 
 注意观察 `Converters` 的存储结构，`ConvertersForPair` 实际上一个列表。也就是说对于一个 `S -> T` 的转换情况，可能存在多个转换器。
 
-因此，简单来说，你的转换器必须实现 `ConditionalConverter` 才能进行进一步的判断，否则只能返回位于列表前部的转换器。而且需要注意的是，你想要的转换器的前面的转换器如果没有实现 `ConditionalConverter`，那么它会被返回，而不是返回你想要的那个。所以实现“条件转换器”接口还是挺重要的。
+简单来说，转换器必须实现 `ConditionalConverter` 才能进行进一步的判断，即你到底想要哪个具体的转换器，否则只能返回位于列表前部的转换器。而且需要注意的是，你想要的转换器的前面的转换器如果没有实现 `ConditionalConverter`，它就会被立即返回。也就是说如果你想要使用上述接口进行额外的判断，就要保证列表中所有的转换器都实现了该接口。所以实现 `ConditionalConverter ` 接口还是挺重要的。
 
 ## 线程安全？
 `ConversionService` 使用了大量的 JUC 工具。
