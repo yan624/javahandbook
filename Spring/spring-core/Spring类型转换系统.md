@@ -1,3 +1,5 @@
+早在 Spring 1 就有了类型转换的功能，主要基于 `java.beans.PropertyEditor`。[2. Spring早期类型转换，基于PropertyEditor实现](https://zhuanlan.zhihu.com/p/334749955)
+
 Spring 3 引入了 `core.convert` 包，提供了一种通用的类型转换系统。类型转换指的是不同 java 类型之间的转换，例如将 String 转成 Integer，将 po 转成 dto。此外，Spring 还提供了格式化的功能，位于 `context` jar 包的 `format` 包中。格式化只是更改格式，其可以被视为类型转换（type conversion）系统的一个子集。本章不描述格式化。
 
 [Spring 官方文档](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert) 中介绍了该类型转换系统。知乎上有人整理了 [Spring 的类型转换](https://zhuanlan.zhihu.com/p/213809308)，可供参考。
